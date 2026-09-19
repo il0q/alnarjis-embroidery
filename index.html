@@ -477,8 +477,23 @@
         }
     </style>
     <link rel="icon" type="image/png" href="lo.png">
+
+<style id="thread-motion">
+/* خيوط تطريز متحركة - للصفحة الرئيسية فقط */
+.thread-motion{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.38;}
+.thread-motion span{position:absolute;width:42vw;height:2px;background:linear-gradient(90deg,transparent,rgba(61,183,181,.28),transparent);border-radius:999px;transform-origin:center;animation:threadDrift 14s ease-in-out infinite;}
+.thread-motion span:nth-child(1){top:22%;left:-12%;transform:rotate(18deg);animation-delay:-2s;}
+.thread-motion span:nth-child(2){top:48%;left:45%;width:35vw;transform:rotate(-24deg);animation-delay:-7s;}
+.thread-motion span:nth-child(3){top:72%;left:-8%;width:48vw;transform:rotate(12deg);animation-delay:-10s;}
+.thread-motion span:nth-child(4){top:34%;left:68%;width:30vw;transform:rotate(32deg);animation-delay:-5s;}
+@keyframes threadDrift{0%,100%{translate:0 0;opacity:.15;}50%{translate:35px -18px;opacity:.55;}}
+@media (prefers-reduced-motion:reduce){.thread-motion span{animation:none;}}
+@media (max-width:600px){.thread-motion{opacity:.22}.thread-motion span{width:70vw}.thread-motion span:nth-child(2){left:35%;width:55vw}.thread-motion span:nth-child(4){left:55%;width:45vw;}}
+</style>
+
 </head>
 <body>
+<div class="thread-motion" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
     <!-- 🧵 الخلفية الحية ممتدة ثلاثية الأبعاد -->
     <div class="bg-threads-3d">
