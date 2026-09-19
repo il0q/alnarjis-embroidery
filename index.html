@@ -31,7 +31,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.8;
-            overflow-x: hidden;
+            overflow-x: clip;
             position: relative;
             perspective: 1000px;
         }
@@ -50,7 +50,8 @@
 
         .thread-3d {
             position: absolute;
-            width: 150%;
+            width: 100%;
+            max-width: 100%;
             height: 400px;
             fill: none;
             stroke-linecap: round;
@@ -59,7 +60,7 @@
 
         .t-gold {
             top: 5%;
-            left: -25%;
+            left: 0;
             stroke: rgba(61, 183, 181, 0.24);
             stroke-width: 2.5;
             animation: weave3D-Gold 20s infinite ease-in-out alternate;
@@ -67,7 +68,7 @@
 
         .t-burgundy {
             bottom: 5%;
-            right: -25%;
+            right: 0;
             stroke: rgba(92, 61, 72, 0.22);
             stroke-width: 2;
             animation: weave3D-Burgundy 25s infinite ease-in-out alternate;
@@ -438,14 +439,14 @@
 
         @keyframes weave3D-Gold {
             0% { transform: translate3d(0, 0, -100px) rotateX(10deg) rotateY(5deg); stroke-dashoffset: 0; }
-            50% { transform: translate3d(40px, 30px, 50px) rotateX(-5deg) rotateY(15deg); }
-            100% { transform: translate3d(-20px, -20px, -50px) rotateX(5deg) rotateY(-10deg); stroke-dashoffset: -300; }
+            50% { transform: translate3d(20px, 30px, 50px) rotateX(-5deg) rotateY(15deg); }
+            100% { transform: translate3d(-10px, -20px, -50px) rotateX(5deg) rotateY(-10deg); stroke-dashoffset: -300; }
         }
 
         @keyframes weave3D-Burgundy {
             0% { transform: translate3d(0, 0, -50px) rotateX(-10deg) rotateY(-10deg); stroke-dashoffset: 0; }
-            50% { transform: translate3d(-50px, -40px, 80px) rotateX(15deg) rotateY(5deg); }
-            100% { transform: translate3d(30px, 20px, -120px) rotateX(-5deg) rotateY(10deg); stroke-dashoffset: 300; }
+            50% { transform: translate3d(-20px, -40px, 80px) rotateX(15deg) rotateY(5deg); }
+            100% { transform: translate3d(15px, 20px, -120px) rotateX(-5deg) rotateY(10deg); stroke-dashoffset: 300; }
         }
 
         @keyframes slideDown {
