@@ -13,10 +13,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
+
+        /* منع السحب الأفقي على الهواتف بدون تغيير التصميم */
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .bg-threads-3d {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            contain: paint;
+        }
+
+        img, video, svg, iframe {
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            .nav-container, main, section, footer {
+                max-width: 100%;
+            }
+        }
         /* الألوان والهوية البصرية الدافئة والمريحة للعين المتطابقة مع الهوية الجديدة */
         :root {
             --primary-color: #5c3d48; /* العنابي الملكي للمطرزات */
-            --accent-color: #b89424;  /* الذهبي الدافئ المريح */
+            --accent-color: #b89424;
+            --brand-teal: #3ec1bb;  /* الذهبي الدافئ المريح */
             --bg-color: #f7f4ed;      /* درجة كريمية دافئة جداً وناعمة للعين */
             --card-bg: #f0eae1;       /* درجة دافئة للبطاقات بدلاً من الأبيض الصريح */
             --text-dark: #2d2d2d;     /* رمادي داكن ناعم للنصوص */
@@ -125,7 +163,7 @@
             height: 4px;
             margin: 15px auto 25px auto;
             border-radius: 10px;
-            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), #ca5cdd, var(--primary-color));
+            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), var(--brand-teal), var(--primary-color));
             background-size: 600% 600%;
             animation: animateGradientStream 6s infinite linear;
         }
@@ -218,6 +256,46 @@
                 opacity: 0.2;
             }
         }
+    
+        /* زر واتساب عائم للتواصل السريع */
+        .whatsapp-float {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.28);
+            z-index: 1100;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.06);
+            box-shadow: 0 16px 35px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-float span {
+            font-size: 27px;
+            line-height: 1;
+        }
+        @media (max-width: 768px) {
+            .whatsapp-float { right: 16px; bottom: 16px; width: 54px; height: 54px; font-size: 25px; }
+        }
+    
+        .success-actions {
+            display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin-top: 24px;
+        }
+        .btn-whatsapp-success {
+            background:#25D366; color:#fff; text-decoration:none; padding:14px 28px; border-radius:50px;
+            font-weight:800; box-shadow:0 10px 25px rgba(37,211,102,.22); transition:transform .35s ease;
+        }
+        .btn-whatsapp-success:hover { transform:translateY(-4px); }
     </style>
 </head>
 <body>
@@ -241,8 +319,16 @@
         <div class="divider"></div>
         
         <p>شكراً لثقتك بالنرجس للتطريز، سيقوم فريقنا بمراجعة تفاصيل طلبك والتواصل معك عبر الواتساب في أقرب وقت ممكن. 🇴🇲</p>
-        <a href="index.html" class="btn-back">العودة للرئيسية</a>
+        <div class="success-actions">
+            <a href="index.html" class="btn-back">العودة للرئيسية</a>
+            <a href="https://api.whatsapp.com/send?phone=96892908668" target="_blank" rel="noopener" class="btn-whatsapp-success">تواصل عبر واتساب</a>
+        </div>
     </div>
+
+
+    <a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=96892908668" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا عبر واتساب">
+        <span>💬</span>
+    </a>
 
 </body>
 </html>

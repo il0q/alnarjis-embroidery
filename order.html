@@ -10,10 +10,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght=300;400;600;700;900&display=swap" rel="stylesheet">
     
     <style>
+
+        /* منع السحب الأفقي على الهواتف بدون تغيير التصميم */
+        html {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .bg-threads-3d {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            contain: paint;
+        }
+
+        img, video, svg, iframe {
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+            .nav-container, main, section, footer {
+                max-width: 100%;
+            }
+        }
         /* الألوان والهوية البصرية الدافئة والمريحة للعين المتطابقة مع index.html */
         :root {
             --primary-color: #5c3d48; /* العنابي الملكي للمطرزات */
-            --accent-color: #b89424;  /* الذهبي الدافئ المريح */
+            --accent-color: #b89424;
+            --brand-teal: #3ec1bb;  /* الذهبي الدافئ المريح */
             --bg-color: #f7f4ed;      /* درجة كريمية دافئة جداً وناعمة للعين */
             --card-bg: #f0eae1;       /* درجة دافئة للبطاقات والقوائم */
             --text-dark: #2d2d2d;     
@@ -103,7 +141,7 @@
             height: 55px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--accent-color);
+            border: 2px solid var(--brand-teal);
             transition: transform 0.8s var(--transition);
         }
 
@@ -138,7 +176,7 @@
             width: 100%;
             height: 3px;
             border-radius: 2px;
-            background: linear-gradient(270deg, var(--accent-color), var(--primary-color), #ca5cdd, var(--accent-color));
+            background: linear-gradient(270deg, var(--accent-color), var(--primary-color), var(--brand-teal), var(--accent-color));
             background-size: 400% 400%;
             transform: scaleX(0);
             transform-origin: right;
@@ -182,7 +220,7 @@
             height: 5px;
             margin: 25px auto;
             border-radius: 10px;
-            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), #ca5cdd, var(--primary-color));
+            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), var(--brand-teal), var(--primary-color));
             background-size: 600% 600%;
             animation: animateGradientStream 6s infinite linear;
         }
@@ -362,6 +400,50 @@
             .page-header h1 { font-size: 32px; }
             .bg-threads-3d { opacity: 0.15; }
         }
+    
+        /* زر واتساب عائم للتواصل السريع */
+        .whatsapp-float {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 28px;
+            box-shadow: 0 12px 28px rgba(37, 211, 102, 0.28);
+            z-index: 1100;
+            transition: transform .35s ease, box-shadow .35s ease;
+        }
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.06);
+            box-shadow: 0 16px 35px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-float span {
+            font-size: 27px;
+            line-height: 1;
+        }
+        @media (max-width: 768px) {
+            .whatsapp-float { right: 16px; bottom: 16px; width: 54px; height: 54px; font-size: 25px; }
+        }
+    
+        .order-note {
+            margin-top: 22px;
+            padding: 16px 18px;
+            border-radius: 18px;
+            background: rgba(62,193,187,.09);
+            border: 1px solid rgba(62,193,187,.18);
+            color: var(--text-muted);
+            text-align: center;
+            font-size: 15px;
+        }
+        .order-note a { color: #168f89; font-weight: 800; text-decoration: none; }
+        .order-note a:hover { text-decoration: underline; }
     </style>
 <link rel="icon" type="image/png" href="lo.png">
 </head>
@@ -450,12 +532,21 @@
 
             <button type="submit" class="btn-submit">إرسال الطلب إلى النرجس</button>
 
+            <div class="order-note">
+                تفضل التواصل مباشرة؟ <a href="https://api.whatsapp.com/send?phone=96892908668" target="_blank" rel="noopener">تحدث معنا عبر واتساب</a> لإرسال استفسارك أو مناقشة فكرتك.
+            </div>
+
         </form>
     </div>
 
     <footer>
         <p>&copy; 2026 النرجس للتطريز. جميع الحقوق محفوظة.</p>
     </footer>
+
+
+    <a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=96892908668" target="_blank" rel="noopener" aria-label="تواصل معنا عبر واتساب" title="تواصل معنا عبر واتساب">
+        <span>💬</span>
+    </a>
 
 </body>
 </html>
