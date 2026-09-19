@@ -13,8 +13,8 @@
         /* الألوان والهوية البصرية الدافئة والمريحة للعين */
         :root {
             --primary-color: #5c3d48; /* العنابي الملكي للمطرزات */
-            --accent-color: #b89424;  /* الذهبي الدافئ المريح */
-            --bg-color: #f7f4ed;      /* درجة كريمية دافئة جداً وناعمة للعين */
+            --accent-color: #3DB7B5;  /* الذهبي الدافئ المريح */
+            --bg-color: #FAF9F6;      /* درجة كريمية دافئة جداً وناعمة للعين */
             --card-bg: #f0eae1;       /* درجة دافئة للبطاقات والقوائم */
             --card-hover: #eae2d5;    /* درجة دافئة عند تمرير الماوس */
             --text-dark: #2d2d2d;     
@@ -25,12 +25,13 @@
 
         body {
             font-family: 'Cairo', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #FAF9F6 0%, #B7EBE3 100%);
             background-color: var(--bg-color);
             color: var(--text-dark);
             margin: 0;
             padding: 0;
             line-height: 1.8;
-            overflow-x: hidden;
+            overflow-x: clip;
             position: relative;
             perspective: 1000px;
         }
@@ -49,7 +50,8 @@
 
         .thread-3d {
             position: absolute;
-            width: 150%;
+            width: 100%;
+            max-width: 100%;
             height: 400px;
             fill: none;
             stroke-linecap: round;
@@ -58,16 +60,16 @@
 
         .t-gold {
             top: 5%;
-            left: -25%;
-            stroke: rgba(184, 148, 36, 0.35);
+            left: 0;
+            stroke: rgba(61, 183, 181, 0.24);
             stroke-width: 2.5;
             animation: weave3D-Gold 20s infinite ease-in-out alternate;
         }
 
         .t-burgundy {
             bottom: 5%;
-            right: -25%;
-            stroke: rgba(92, 61, 72, 0.3);
+            right: 0;
+            stroke: rgba(92, 61, 72, 0.22);
             stroke-width: 2;
             animation: weave3D-Burgundy 25s infinite ease-in-out alternate;
         }
@@ -139,7 +141,7 @@
             width: 100%;
             height: 3px;
             border-radius: 2px;
-            background: linear-gradient(270deg, var(--accent-color), var(--primary-color), #ca5cdd, var(--accent-color));
+            background: linear-gradient(270deg, var(--accent-color), var(--primary-color), #3DB7B5, var(--accent-color));
             background-size: 400% 400%;
             transform: scaleX(0);
             transform-origin: right;
@@ -176,7 +178,7 @@
             height: 5px;
             margin: 20px auto;
             border-radius: 10px;
-            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), #ca5cdd, var(--primary-color));
+            background: linear-gradient(270deg, var(--primary-color), var(--accent-color), #3DB7B5, var(--primary-color));
             background-size: 600% 600%;
             animation: animateGradientStream 6s infinite linear;
         }
@@ -268,7 +270,7 @@
 
         /* 🌟 أزرار طلب الخدمة المحدثة مع تأثير اللمعان والوميض التفاعلي الفاخر */
         .btn-order-service {
-            background: linear-gradient(135deg, var(--accent-color) 0%, #a3811f 100%);
+            background: linear-gradient(135deg, var(--accent-color) 0%, #2F8F8B 100%);
             color: #fff;
             padding: 14px 45px;
             font-size: 19px;
@@ -335,14 +337,14 @@
 
         @keyframes weave3D-Gold {
             0% { transform: translate3d(0, 0, -100px) rotateX(10deg) rotateY(5deg); stroke-dashoffset: 0; }
-            50% { transform: translate3d(40px, 30px, 50px) rotateX(-5deg) rotateY(15deg); }
-            100% { transform: translate3d(-20px, -20px, -50px) rotateX(5deg) rotateY(-10deg); stroke-dashoffset: -300; }
+            50% { transform: translate3d(20px, 30px, 50px) rotateX(-5deg) rotateY(15deg); }
+            100% { transform: translate3d(-10px, -20px, -50px) rotateX(5deg) rotateY(-10deg); stroke-dashoffset: -300; }
         }
 
         @keyframes weave3D-Burgundy {
             0% { transform: translate3d(0, 0, -50px) rotateX(-10deg) rotateY(-10deg); stroke-dashoffset: 0; }
-            50% { transform: translate3d(-50px, -40px, 80px) rotateX(15deg) rotateY(5deg); }
-            100% { transform: translate3d(30px, 20px, -120px) rotateX(-5deg) rotateY(10deg); stroke-dashoffset: 300; }
+            50% { transform: translate3d(-20px, -40px, 80px) rotateX(15deg) rotateY(5deg); }
+            100% { transform: translate3d(15px, 20px, -120px) rotateX(-5deg) rotateY(10deg); stroke-dashoffset: 300; }
         }
 
         @media (max-width: 768px) {
@@ -355,11 +357,24 @@
         }
     </style>
     <link rel="icon" type="image/png" href="lo.png">
+
+<style id="thread-motion">
+.thread-motion{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;opacity:.38;}
+.thread-motion span{position:absolute;width:42vw;height:2px;background:linear-gradient(90deg,transparent,rgba(61,183,181,.28),transparent);border-radius:999px;transform-origin:center;animation:threadDrift 14s ease-in-out infinite;}
+.thread-motion span:nth-child(1){top:22%;left:-12%;transform:rotate(18deg);animation-delay:-2s;}
+.thread-motion span:nth-child(2){top:48%;left:45%;width:35vw;transform:rotate(-24deg);animation-delay:-7s;}
+.thread-motion span:nth-child(3){top:72%;left:-8%;width:48vw;transform:rotate(12deg);animation-delay:-10s;}
+.thread-motion span:nth-child(4){top:34%;left:68%;width:30vw;transform:rotate(32deg);animation-delay:-5s;}
+@keyframes threadDrift{0%,100%{translate:0 0;scale:1;opacity:.55;}50%{translate:18px -10px;scale:1.04;opacity:1;}}
+@media (prefers-reduced-motion:reduce){.thread-motion span{animation:none;}}
+@media (max-width:600px){.thread-motion{opacity:.22}.thread-motion span{width:70vw}.thread-motion span:nth-child(2){left:35%;width:55vw}.thread-motion span:nth-child(4){left:55%;width:45vw;}}
+</style>
 </head>
 <body>
 
     <!-- 🧵 الخلفية الحية ممتدة ثلاثية الأبعاد -->
-    <div class="bg-threads-3d">
+    <div class="thread-motion" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+<div class="bg-threads-3d">
         <svg class="thread-3d t-gold" viewBox="0 0 1440 400">
             <path d="M0,200 C300,350 600,50 900,200 C1200,350 1300,100 1440,200" />
         </svg>
